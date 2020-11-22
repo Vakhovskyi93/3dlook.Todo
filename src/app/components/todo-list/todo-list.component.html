@@ -1,0 +1,30 @@
+<div class="container-fluid bg-primary">
+  <nav class=" container navbar navbar-light ">
+    <a class="navbar-brand text-light" href="#">ToDo</a>
+  </nav>
+</div>
+<div class="container ">
+  <div class="flex-column row align-items-center">
+    <div class="col-sm-12 col-md-8 col-lg-6  ">
+      <form action="" class=" row flex-column" #formAddTodo='ngForm' (ngSubmit)="addTodo( )">
+        <label for="title">Title</label>
+        <input type="text" id="title" required [(ngModel)]="todo.title" name="title" #title="ngModel" >
+        <label for="text">Text</label>
+        <input type="text" id="text" required [(ngModel)]="todo.text" name="text" #text="ngModel">
+      </form>
+      <button class="row mt-3 mb-5 btn btn-primary" (click)="addTodo()"
+              [disabled]="!title.dirty  || !text.dirty "> Add to list</button>
+    </div>
+    <div class="col-sm-12 col-md-8 col-lg-6  ">
+      <div class="itemTodo mt-1 p-3 bg-light"
+           *ngFor="let item of listItem"
+      >
+        <h2>{{item.title}}</h2>
+        <p>{{item.text}}</p>
+        <button class="btn btn-danger  "
+                (click)="deleteTask(item.id)"
+        > Delete </button>
+      </div>
+    </div>
+  </div>
+</div>
